@@ -1,7 +1,8 @@
-﻿#include "pch.h"
-#include "Window.h"
+﻿#include "Window.h"
 
-#include <RenderContext.h>
+#include <GCE/Render/RenderContext.h>
+
+#include <chrono>
 
 #include "Camera.h"
 #include "Text.h"
@@ -11,9 +12,9 @@ using namespace gce;
 
 namespace sr
 {
-	Window::Window(std::wstring_view const title, uint32 const width, uint32 const height)
+	Window::Window(std::wstring_view const title, uint32 const width, uint32 const height, int32 const flags)
 	{
-		Create(title, width, height);
+		Create(title, width, height, flags);
 	}
 
 	Window::~Window()
@@ -21,11 +22,21 @@ namespace sr
 		m_renderer.Destroy();
 	}
 
-	void Window::Create(std::wstring_view const title, uint32 const width, uint32 const height)
+	void Window::Create(std::wstring_view const title, uint32 const width, uint32 const height,int32 const flags)
 	{
 		RenderContext::Init();
 		RenderContext::InitUI();
-		RenderContext::SetMSAA(MSAA_COUNT_X2);
+
+		m_IsShadowMapEnabled = (flags & FLAG_ENABLE_SHADOWPASS) != 0;
+		
+		if (flags & FLAG_NO_MSAA)
+			RenderContext::SetMSAA(MSAA_COUNT::NONE);
+		else if (flags & FLAG_MSAA_X4)
+			RenderContext::SetMSAA(MSAA_COUNT::MSAA_COUNT_X4);
+		else if (flags & FLAG_MSAA_X8)
+			RenderContext::SetMSAA(MSAA_COUNT::MSAA_COUNT_X8);
+		else
+			RenderContext::SetMSAA(MSAA_COUNT::MSAA_COUNT_X2);
 
 		m_window.Create(title, width, height);
 		m_width = width;
@@ -56,7 +67,8 @@ namespace sr
 	void Window::End()
 	{
 		//We must delay the draw inside the End3D function to encapsulate the multiples passes
-		RenderShadowPass();
+		if (m_IsShadowMapEnabled)
+			RenderShadowPass();
 		RenderMainPass();
 		
 		m_renderer.End3D(); 
@@ -98,7 +110,7 @@ namespace sr
 		for (Text* pText : m_textToDraw)
 		{
 			m_window.SetActiveBrush(pText->m_brush);
-			m_window.DrawTextUI(pText->m_text, pText->m_font, RectanglePosF( pText->m_position.x, pText->m_position.y-15, clientRect.right, clientRect.bottom));
+			m_window.DrawTextUI(pText->m_text, *pText->m_font, RectanglePosF( pText->m_position.x, pText->m_position.y-15, clientRect.right, clientRect.bottom));
 		}
 
 		m_window.EndUI();
@@ -110,4 +122,19 @@ namespace sr
 		InputSystem::HandleInputs();
 		m_window.Update();
 	}
+
+	bool Window::IsOpen() const
+	{
+		// TO DO : Separate DeltaTime calculation into it's own function/abstraction
+		static auto lastTime = std::chrono::high_resolution_clock::now();
+
+		auto currentTime = std::chrono::high_resolution_clock::now();
+		std::chrono::duration<float> delta = currentTime - lastTime;
+		lastTime = currentTime;
+
+		m_deltaTime = delta.count();
+
+		return m_window.IsOpen();
+	}
+
 }

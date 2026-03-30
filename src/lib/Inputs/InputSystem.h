@@ -1,8 +1,10 @@
 #ifndef ENGINE_INPUT_SYSTEM_H_INCLUDED
 #define ENGINE_INPUT_SYSTEM_H_INCLUDED
 
-#include "define.h"
+#include "GCE/Core/define.h"
 #include "InputsEnums.h"
+
+#include <Aliases.h>
 
 struct HWND__;
 typedef HWND__* HWND;
@@ -47,6 +49,7 @@ private:
     friend bool GetButtonDown( Mouse::Button button );
 
     friend gce::Vector2i32 GetMousePosition();
+    friend gce::Vector2f32 GetMouseDelta();
     friend void SetMousePosition(gce::Vector2i32 const& coordinates );
 
     friend void LockMouseCursor();

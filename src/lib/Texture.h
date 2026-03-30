@@ -1,5 +1,7 @@
 #pragma once
-#include <Render/Texture.h>
+#include <GCE/Render/Texture.h>
+
+#include <Aliases.h>
 
 namespace sr
 {

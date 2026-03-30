@@ -1,11 +1,11 @@
-﻿#include "pch.h"
-#include "Renderer.h"
+﻿#include "Renderer.h"
 
 #include "Camera.h"
 #include "Window.h"
 
-#include <LightManager.h>
-#include <FrameResources.h>
+#include <GCE/Render/LightManager.h>
+#include <GCE/Render/FrameResources.h>
+
 using namespace gce;
 
 namespace sr

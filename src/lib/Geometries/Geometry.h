@@ -1,6 +1,8 @@
 #pragma once
 
-#include <Geometry.h>
+#include <GCE/Render/Geometry.h>
+
+#include <Aliases.h>
 
 #include "Renderer.h"
 #include "Transform.h"

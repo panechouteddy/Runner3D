@@ -1,9 +1,11 @@
 #ifndef ENGINE_INPUTS_METHODS_H_INCLUDED
 #define ENGINE_INPUTS_METHODS_H_INCLUDED
 
-#include <Maths/Vector2.hpp>
+#include <GCE/Core/Maths/Vector2.hpp>
 #include "InputsEnums.h"
 #include "InputSystem.h"
+
+#include <Aliases.h>
 
 namespace sr {
 
@@ -14,6 +16,7 @@ namespace sr {
 [[nodiscard]] inline bool GetButtonDown( Mouse::Button const button ) { return InputSystem::s_mouseStates[button] == InputSystem::States::DOWN; }
 
 [[nodiscard]] gce::Vector2i32 GetMousePosition();
+[[nodiscard]] gce::Vector2f32 GetMouseDelta();
 void SetMousePosition(gce::Vector2i32 const& coordinates );
 
 void LockMouseCursor();

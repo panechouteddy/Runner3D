@@ -2,8 +2,10 @@
 
 #include "ShadowMap.h"
 
-#include <Shader.h>
-#include <D12PipelineObject.h>
+#include <Aliases.h>
+
+#include <GCE/Render/Shader.h>
+#include <GCE/Render/D12PipelineObject.h>
 
 #define SHADER_PATH "res/Render/Shaders/"
 
@@ -12,6 +14,8 @@ namespace sr
     class Window;
     class Camera;
 
+    enum Flag : int32;
+    
     class Renderer
     {
     private:

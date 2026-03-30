@@ -1,102 +1,46 @@
 {
     "projects": {
-        "Catcher": {
-            "additionalDependencies": [
-                "Render.lib"
-            ],
+        "Runner": {
+            "additionalDependencies": [],
             "additionalIncludeDirectories": [
-                "$(SolutionDir)../lib/GCRender/includes/",
-                "$(SolutionDir)../lib/GCRender/includes/Core/",
-                "$(SolutionDir)../lib/GCRender/includes/Render/"
+              "$(SolutionDir)../vendor/GCE/include/"
             ],
-            "additionalLibraryDirectories": [
-                "$(SolutionDir)../lib/GCRender/lib/"
-            ],
+            "additionalLibraryDirectories": [],
             "dependencies": [
                 "lib"
             ],
             "dependents": [],
-            "guid": "39470DB9-4F25-6109-318E-535E02060F3A",
+            "guid": "605C141C-75B2-3A5B-5052-420A73BD2505",
             "lib": false,
             "pch": true,
             "preprocessorDefinitions": [],
             "vcpkg": false,
-            "window": true
-        },
-        "Shuffle": {
-            "additionalDependencies": [
-                "Render.lib"
-            ],
-            "additionalIncludeDirectories": [
-                "$(SolutionDir)../lib/GCRender/includes/",
-                "$(SolutionDir)../lib/GCRender/includes/Core/",
-                "$(SolutionDir)../lib/GCRender/includes/Render/"
-            ],
-            "additionalLibraryDirectories": [
-                "$(SolutionDir)../lib/GCRender/lib/"
-            ],
-            "dependencies": [
-                "lib"
-            ],
-            "dependents": [],
-            "guid": "448A5F53-0095-18AB-2AC7-3B84718C1E6A",
-            "lib": false,
-            "pch": true,
-            "preprocessorDefinitions": [],
-            "vcpkg": false,
-            "window": true
-        },
-        "Tron": {
-            "additionalDependencies": [
-                "Render.lib"
-            ],
-            "additionalIncludeDirectories": [
-                "$(SolutionDir)../lib/GCRender/includes/",
-                "$(SolutionDir)../lib/GCRender/includes/Core/",
-                "$(SolutionDir)../lib/GCRender/includes/Render/"
-            ],
-            "additionalLibraryDirectories": [
-                "$(SolutionDir)../lib/GCRender/lib/"
-            ],
-            "dependencies": [
-                "lib"
-            ],
-            "dependents": [],
-            "guid": "7C803E07-4542-4AD1-2C52-257044A05D23",
-            "lib": false,
-            "pch": true,
-            "preprocessorDefinitions": [],
-            "vcpkg": false,
-            "window": true
+            "window": false
         },
         "lib": {
             "additionalDependencies": [
-                "Render.lib"
+              "GCE.lib"
             ],
             "additionalIncludeDirectories": [
-                "$(SolutionDir)../lib/GCRender/includes/",
-                "$(SolutionDir)../lib/GCRender/includes/Core/",
-                "$(SolutionDir)../lib/GCRender/includes/Render/"
+              "$(SolutionDir)../vendor/GCE/include/"
             ],
             "additionalLibraryDirectories": [
-                "$(SolutionDir)../lib/GCRender/lib/"
+              "$(SolutionDir)../vendor/GCE/lib/"
             ],
             "dependencies": [],
             "dependents": [
-                "Catcher",
-                "Shuffle",
-                "Tron"
+                "Runner"
             ],
-            "guid": "52D14AD0-389E-08C5-3AC9-2FBF18860D28",
+            "guid": "29B95B13-3379-1598-5B35-7CA55EEA4C09",
             "lib": true,
-            "pch": true,
+            "pch": false,
             "preprocessorDefinitions": [],
             "vcpkg": false,
             "window": false
         }
     },
-    "solution_guid": "390C19F9-6712-4516-5C50-3F45272E5D0C",
-    "solution_name": "Geo3D",
-    "startup_project": "Catcher",
+    "solution_guid": "60456E35-0D39-2860-3648-56AA1EA27510",
+    "solution_name": "Projet2",
+    "startup_project": "Runner",
     "version": "1.17.4"
 }

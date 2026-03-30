@@ -1,8 +1,10 @@
 #pragma once
-#include <Maths/Vector3.h>
-#include <Maths/Quaternion.h>
-#include <Maths/Matrix.h>
+#include <GCE/Core/Maths/Vector3.h>
+#include <GCE/Core/Maths/Quaternion.h>
+#include <GCE/Core/Maths/Matrix.h>
 #include <DirectXMath.h>
+
+#include <Aliases.h>
 
 namespace sr
 {

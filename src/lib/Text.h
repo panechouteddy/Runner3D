@@ -1,17 +1,41 @@
 ﻿#pragma once
 #include <string>
 
-#include "Font.h"
+#include <GCE/Render/Font.h>
+
+#include <Aliases.h>
+
 #include "Window.h"
+
+#define PROVIDE_DEFAULT_FONT
 
 namespace sr
 {
+    inline gce::Font* GetDefaultFont() {
+		static gce::Font* defaultFont = new gce::Font(L"Arial");
+		return defaultFont;
+    }
+
     class Text
     {
     public:
-        Text() { m_font.Load(L"Calibri"); };
-        Text(std::wstring const& text) {m_text = text; m_font.Load(L"Calibri");}
-        Text(Text const& other) = delete; 
+        Text()
+        {
+#ifdef PROVIDE_DEFAULT_FONT
+            m_font = GetDefaultFont();
+#endif
+        }
+
+        Text(std::wstring const& text, gce::Font const* font = nullptr)
+        {
+#ifdef PROVIDE_DEFAULT_FONT
+            if(font == nullptr) font = GetDefaultFont();
+#endif
+            m_text = text;
+            m_font = font;
+        }
+
+        Text(Text const& other) = delete;
         Text(Text&& other) noexcept = delete;
 
         Text& operator=(Text const& other) = delete;
@@ -23,9 +47,10 @@ namespace sr
         void SetColor(gce::Color const& color) { m_brush.SetColor(color); }
         void SetOpacity(float32 opacity) { m_brush.SetOpacity(opacity); }
         void SetPosition(gce::Vector2f32 const& pos) { m_position = pos; };
+		void SetFont(const gce::Font* font) { m_font = font; }
 
     private:
-        gce::Font m_font; 
+        gce::Font const* m_font{};
         gce::ColorBrush m_brush = gce::ColorBrush(gce::Color::Red, 1.0f);
         std::wstring m_text;
 
@@ -34,4 +59,3 @@ namespace sr
         friend class Window;
     };
 }
-

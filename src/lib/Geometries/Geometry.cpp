@@ -1,7 +1,6 @@
-#include "pch.h"
 #include "Geometry.h"
 
-#include <FrameResources.h>
+#include <GCE/Render/FrameResources.h>
 
 #include "Texture.h"
 

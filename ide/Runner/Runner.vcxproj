@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ItemGroup Label="ProjectConfigurations">
+        <ProjectConfiguration Include="Debug|Win32">
+            <Configuration>Debug</Configuration>
+            <Platform>Win32</Platform>
+        </ProjectConfiguration>
+        <ProjectConfiguration Include="Release|Win32">
+            <Configuration>Release</Configuration>
+            <Platform>Win32</Platform>
+        </ProjectConfiguration>
+        <ProjectConfiguration Include="Debug|x64">
+            <Configuration>Debug</Configuration>
+            <Platform>x64</Platform>
+        </ProjectConfiguration>
+        <ProjectConfiguration Include="Release|x64">
+            <Configuration>Release</Configuration>
+            <Platform>x64</Platform>
+        </ProjectConfiguration>
+    </ItemGroup>
+    <PropertyGroup Label="Globals">
+        <Keyword>Win32Proj</Keyword>
+        <ProjectGuid>{605C141C-75B2-3A5B-5052-420A73BD2505}</ProjectGuid>
+        <RootNamespace>MonProjet1</RootNamespace>
+    </PropertyGroup>
+    <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+    <PropertyGroup Label="Configuration">
+        <ConfigurationType>Application</ConfigurationType>
+        <UseDebugLibraries Condition="'$(Configuration)'=='Debug'">true</UseDebugLibraries>
+        <UseDebugLibraries Condition="'$(Configuration)'=='Release'">false</UseDebugLibraries>
+        <PlatformToolset>v143</PlatformToolset>
+        <WholeProgramOptimization Condition="'$(Configuration)'=='Release'">true</WholeProgramOptimization>
+        <CharacterSet>Unicode</CharacterSet>
+    </PropertyGroup>
+    <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+    <ImportGroup Label="ExtensionSettings">
+    </ImportGroup>
+    <ImportGroup Label="Shared">
+    </ImportGroup>
+    <ImportGroup Label="PropertySheets">
+        <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    </ImportGroup>
+    <PropertyGroup Label="UserMacros" />
+    <PropertyGroup>
+        <OutDir>$(ProjectDir)$(Platform)\$(Configuration)\</OutDir>
+        <IntDir>$(ProjectDir)$(Platform)\$(Configuration)\intermediate\</IntDir>
+    </PropertyGroup>
+    <PropertyGroup Label="Vcpkg">
+        <VcpkgEnabled>false</VcpkgEnabled>
+        <VcpkgEnableManifest>false</VcpkgEnableManifest>
+        <VcpkgManifestRoot>$(SolutionDir)..\config\Runner</VcpkgManifestRoot>
+        <VcpkgInstalledDir>$(SolutionDir)\vcpkg_installed\$(VcpkgTriplet)</VcpkgInstalledDir>
+    </PropertyGroup>
+    <ItemDefinitionGroup>
+        <ClCompile>
+            <WarningLevel>Level3</WarningLevel>
+            <FunctionLevelLinking Condition="'$(Configuration)'=='Release'">true</FunctionLevelLinking>
+            <IntrinsicFunctions Condition="'$(Configuration)'=='Release'">true</IntrinsicFunctions>
+            <SDLCheck>true</SDLCheck>
+            <PreprocessorDefinitions Condition="'$(Configuration)'=='Debug'">_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+            <PreprocessorDefinitions Condition="'$(Configuration)'=='Release'">NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+            <ConformanceMode>true</ConformanceMode>
+            <LanguageStandard>stdcpp20</LanguageStandard>
+            <PrecompiledHeader>Use</PrecompiledHeader>
+            <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+            <AdditionalIncludeDirectories>$(SolutionDir)..\src;$(SolutionDir)..\src\Runner;$(SolutionDir)../vendor/GCE/include/;$(SolutionDir)..\src\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+            <MultiProcessorCompilation>true</MultiProcessorCompilation>
+        </ClCompile>
+        <Link>
+            <SubSystem>Console</SubSystem>
+            <EnableCOMDATFolding Condition="'$(Configuration)'=='Release'">true</EnableCOMDATFolding>
+            <OptimizeReferences Condition="'$(Configuration)'=='Release'">true</OptimizeReferences>
+            <GenerateDebugInformation>true</GenerateDebugInformation>
+            <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Link>
+        <FxCompile>
+            <ObjectFileOutput>$(SolutionDir)../res/Render/Shaders/%(Filename).cso</ObjectFileOutput>
+            <ShaderModel>6.0</ShaderModel>
+        </FxCompile>
+        <Lib>
+            <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Lib>
+    </ItemDefinitionGroup>
+    <ItemGroup>
+        <ClInclude Include="$(SolutionDir)..\src\Runner\App.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\ButtonText.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\Character.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\Coins.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\Controller.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\CrazyFrogEnnemy.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\Entity.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\Floor.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\MenuScene.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\MoveEnnemy.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\pch.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\PowerUp.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\RandomConfigGenerator.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\Ressources.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\RunnerCamera.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\RunnerScene.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\Scene.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\SceneManager.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\StaticEnnemi.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\Tile.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\TileGenerator.h" />
+        <ClInclude Include="$(SolutionDir)..\src\Runner\Wall.h" />
+    </ItemGroup>
+    <ItemGroup>
+        <ClCompile Include="$(SolutionDir)..\src\Runner\App.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\ButtonText.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\Character.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\Coins.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\Controller.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\CrazyFrogEnnemy.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\Entity.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\Floor.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\main.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\MenuScene.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\MoveEnnemy.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\pch.cpp">
+            <PrecompiledHeader>Create</PrecompiledHeader>
+        </ClCompile>
+        <ClCompile Include="$(SolutionDir)..\src\Runner\PowerUp.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\RandomConfigGenerator.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\Ressources.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\RunnerCamera.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\RunnerScene.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\Scene.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\SceneManager.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\StaticEnnemi.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\Tile.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\TileGenerator.cpp" />
+        <ClCompile Include="$(SolutionDir)..\src\Runner\Wall.cpp" />
+    </ItemGroup>
+    <ItemGroup>
+    </ItemGroup>
+    <ItemGroup>
+    </ItemGroup>
+    <ItemGroup>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="$(SolutionDir)\lib\lib.vcxproj">
+            <Project>{29B95B13-3379-1598-5B35-7CA55EEA4C09}</Project>
+        </ProjectReference>
+    </ItemGroup>
+    <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+    <ImportGroup Label="ExtensionTargets">
+    </ImportGroup>
+</Project>

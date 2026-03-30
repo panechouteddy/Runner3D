@@ -2,8 +2,10 @@
 
 #include "Transform.h"
 
-#include <define.h>
-#include <RenderCamera.h>
+#include <Aliases.h>
+
+#include <GCE/Render/define.h>
+#include <GCE/Render/RenderCamera.h>
 
 namespace sr
 {

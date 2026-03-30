@@ -1,8 +1,7 @@
-#include "pch.h"
 #include "ShadowMap.h"
 
-#include <FrameResources.h>
-#include <DescriptorAllocator.h>
+#include <GCE/Render/FrameResources.h>
+#include <GCE/Render/DescriptorAllocator.h>
 
 #include "Renderer.h"
 #include "Window.h"

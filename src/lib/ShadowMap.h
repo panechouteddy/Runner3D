@@ -1,7 +1,9 @@
 #pragma once
-#include <Shader.h>
+#include <GCE/Render/Shader.h>
+#include <GCE/Render/ShadowMap.h>
 
-#include "Render/ShadowMap.h"
+#include <Aliases.h>
+
 #include "Camera.h"
 
 #define LIGHT_DIR gce::Vector3f32(0.0f, -1.0f, 1.0f)

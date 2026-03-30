@@ -1,7 +1,11 @@
 #pragma once
+
 #include "Geometry.h"
 
-#include <GeometryFactory.h>
+#include <Aliases.h>
+
+#include <GCE/Core/define.h>
+#include <GCE/Render/GeometryFactory.h>
 
 namespace sr
 {
@@ -50,7 +54,7 @@ namespace sr
     class Donut : public Geometry
     {
     public:
-        Donut(float32 majorRadius, float32 minorRadius) : Geometry(gce::GeometryFactory::CreateDonutGeo(majorRadius, minorRadius, 20, 20)) {}
+        Donut() : Geometry(gce::GeometryFactory::CreateDonutGeo(0.5f, 0.25f, 20, 20)) {}
         ~Donut() override = default;
     };
     
@@ -59,5 +63,11 @@ namespace sr
     public:
         Cylinder() : Geometry(gce::GeometryFactory::CreateCylinderGeo(0.5f, 0.5f, 1.0f, 20, 20)) {}
         ~Cylinder() override = default;
+    };
+
+    class Custom : public Geometry
+    {
+    public:
+        Custom(String filepath) : Geometry(gce::GeometryFactory::LoadGeometry(RES_PATH + filepath)) {}
     };
 }

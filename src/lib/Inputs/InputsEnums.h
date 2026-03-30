@@ -1,7 +1,9 @@
 #ifndef ENGINE_INPUTS_ENUMS_H_INCLUDED
 #define ENGINE_INPUTS_ENUMS_H_INCLUDED
 
-#include "define.h"
+#include <GCE/Core/define.h>
+
+#include <Aliases.h>
 
 namespace sr {
 

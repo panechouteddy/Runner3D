@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "InputsMethods.h"
 
 #include <windows.h>
@@ -16,6 +15,15 @@ namespace sr {
     ScreenToClient( InputSystem::s_windowHandle, &p );
     return { p.x, p.y };
 }
+
+	gce::Vector2f32 GetMouseDelta()
+	{
+		static gce::Vector2i32 lastPosition = GetMousePosition();
+		gce::Vector2i32 const currentPosition = GetMousePosition();
+		gce::Vector2f32 const delta = gce::Vector2f32(static_cast<float32>(currentPosition.x - lastPosition.x), static_cast<float32>(currentPosition.y - lastPosition.y));
+		lastPosition = currentPosition;
+		return delta;
+	}
 
 void SetMousePosition(gce::Vector2i32 const& coordinates )
 {

@@ -1,2 +1,2 @@
 cd ../..
-SolutionGenerator.exe -make repo -clear
+SolutionGenerator.exe -make Projet2 -clear
